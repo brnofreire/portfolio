@@ -536,7 +536,7 @@ span {
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 62%;
+    width: 42%;
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(5) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
