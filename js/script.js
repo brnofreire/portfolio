@@ -31,7 +31,6 @@ window.onscroll = () => {
         //    active sections para animacoes ao rolar scroll 
         sec.classList.add('show-animate');
         }
-        // se quiser usar animacao para repetir ao girar o scroll
         else{
             sec.classList.remove('show-animate');
         }
@@ -45,6 +44,17 @@ window.onscroll = () => {
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
 
-    // animacao do footer ao rolar
+    // botão voltar ao topo
+    let scrollTopBtn = document.querySelector('.footer-iconTop a');
+    scrollTopBtn.classList.toggle('active', window.scrollY > 500);
 }
+
+// scroll suave para o topo
+document.querySelector('.footer-iconTop a').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
 

@@ -112,32 +112,39 @@ section {
 
 .home-content .text-animate {
     position: relative;
-    width: 32.8rem;
+    width: 42rem;
 }
 
 .home-content .text-animate h3 {
     font-size: 3.2rem;
     font-weight: 700;
     color: transparent;
+    position: relative;
+    z-index: 1;
     -webkit-text-stroke: .7px var(--main-color);
     background-image: linear-gradient(var(--main-color), var(--main-color));
     background-repeat: no-repeat;
     -webkit-background-clip: text;
+    background-clip: text;
     background-position: -33rem 0;
     animation: homeBgText 6s linear infinite;
     animation-delay: 2s;
+    white-space: nowrap;
 }
 
 .home-content .text-animate h3::before {
+    /* caret as a thin moving bar using transform for precise sync */
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
+    width: 2px; /* thin caret */
     height: 100%;
-    border-right: 2px solid var(--main-color);
-    z-index: -1;
-    animation: homeCursorText 6s linear infinite;
+    background: var(--main-color);
+    z-index: 2; /* ensure caret stays above text fill */
+    pointer-events: none;
+    transform: translateX(0);
+    animation: homeCaret 6s linear infinite;
     animation-delay: 2s;
 }
 
@@ -523,49 +530,173 @@ span {
     background: var(--main-color);
 }
 /*AQUI É ONDE CONTROLO A BARRA DE CONHECIMENTO DAS SKILLS EM CONJUNTO COM O HTML, SE TROCAR AQUI TEM QUE TROCAR LÁ TAMBÉM*/
-.skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 90%;
+
+/* Backend & Databases - Primeira coluna da primeira row */
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(1) .bar span {
+    width: 85%; /* PHP & Laravel */
 }
 
-.skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 60%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(2) .bar span {
+    width: 75%; /* Java & Spring Boot */
 }
 
-.skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 68%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(3) .bar span {
+    width: 70%; /* Node.js */
 }
 
-.skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 42%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(4) .bar span {
+    width: 60%; /* Python */
 }
 
-.skills-column:nth-child(1) .skills-content .progress:nth-child(5) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 75%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(5) .bar span {
+    width: 85%; /* MySQL & PostgreSQL */
 }
 
-.skills-column:nth-child(1) .skills-content .progress:nth-child(6) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 40%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(6) .bar span {
+    width: 90%; /* APIs REST */
 }
 
-.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 60%;
+/* Frontend & Mobile - Segunda coluna da primeira row */
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(1) .bar span {
+    width: 80%; /* JavaScript & TypeScript */
 }
 
-.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 65%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(2) .bar span {
+    width: 80%; /* React & React Native */
 }
 
-.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 65%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(3) .bar span {
+    width: 75%; /* Vue.js & Nuxt.js */
 }
 
-.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span { /*AQUI É ONDE EU MUDO A BARRA DE PORCENTAGEM*/
-    width: 70%;
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(4) .bar span {
+    width: 90%; /* HTML & CSS */
+}
+
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(5) .bar span {
+    width: 65%; /* Flutter & Dart */
+}
+
+.skills .skills-row:nth-of-type(1) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(6) .bar span {
+    width: 70%; /* Android (Java/Kotlin) */
+}
+
+/* Ferramentas & DevOps - Primeira coluna da segunda row */
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(1) .bar span {
+    width: 90%; /* Git & GitHub */
+}
+
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(2) .bar span {
+    width: 70%; /* Docker */
+}
+
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(3) .bar span {
+    width: 95%; /* VS Code & IDEs */
+}
+
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(1) .skills-content .progress:nth-of-type(4) .bar span {
+    width: 75%; /* Firebase */
+}
+
+/* Metodologias & Soft Skills - Segunda coluna da segunda row */
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(1) .bar span {
+    width: 85%; /* Scrum & Kanban */
+}
+
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(2) .bar span {
+    width: 80%; /* Arquitetura de Software */
+}
+
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(3) .bar span {
+    width: 85%; /* Modelagem de Banco de Dados */
+}
+
+.skills .skills-row:nth-of-type(2) .skills-column:nth-child(2) .skills-content .progress:nth-of-type(4) .bar span {
+    width: 90%; /* Levantamento de Requisitos */
 }
 
 .contact {
     min-height: auto;
     padding-bottom: 7rem;
+}
+
+.contact-info {
+    max-width: 70rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.contact-details {
+    background: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+}
+
+.contact-details h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--main-color);
+}
+
+.contact-details p {
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.contact-details p i {
+    color: var(--main-color);
+    font-size: 2rem;
+}
+
+.contact-details p a {
+    color: var(--text-color);
+    transition: .3s;
+}
+
+.contact-details p a:hover {
+    color: var(--main-color);
+}
+
+.contact-social {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.contact-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 2rem;
+    background: var(--main-color);
+    border-radius: .6rem;
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    font-weight: 600;
+    transition: .3s;
+}
+
+.contact-social a:hover {
+    background: var(--bg-color);
+    color: var(--main-color);
+    border: .2rem solid var(--main-color);
+}
+
+.contact-social a.whatsapp-btn {
+    background: #25D366;
+    border: .2rem solid #25D366;
+}
+
+.contact-social a.whatsapp-btn:hover {
+    background: var(--bg-color);
+    color: #25D366;
+    border: .2rem solid #25D366;
 }
 
 .contact form {
@@ -651,16 +782,36 @@ span {
 }
 
 .footer-iconTop a {
-    position: relative;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: .8rem;
+    padding: 1rem;
+    width: 5rem;
+    height: 5rem;
     background: var(--main-color);
     border: .2rem solid var(--main-color);
-    border-radius: .6rem;
-    z-index: 1;
+    border-radius: 50%;
+    z-index: 999;
     overflow: hidden;
+    transition: all .5s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+    box-shadow: 0 0 20px rgba(0, 171, 240, 0.5);
+}
+
+.footer-iconTop a.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.footer-iconTop a:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 171, 240, 0.8);
 }
 
 .footer-iconTop a::before {
@@ -673,6 +824,7 @@ span {
     background: var(--second-bg-color);
     z-index: -1;
     transition: .5s;
+    border-radius: 50%;
 }
 
 .footer-iconTop a:hover::before {
@@ -682,6 +834,7 @@ span {
 .footer-iconTop a i {
     font-size: 2.4rem;
     color: var(--bg-color);
+    transition: .3s;
 }
 
 .footer-iconTop a:hover i {
@@ -838,6 +991,27 @@ span {
         width: 38px;
         height: 38px;
     }
+
+    .contact-social {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-social a {
+        width: 100%;
+    }
+
+    .footer-iconTop a {
+        bottom: 1rem;
+        right: 1rem;
+        width: 4.5rem;
+        height: 4.5rem;
+        padding: .8rem;
+    }
+
+    .footer-iconTop a i {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 462px) {
@@ -891,15 +1065,18 @@ span {
     }
 }
 
-@keyframes homeCursorText {
+@keyframes homeCaret {
+    /* move caret from start to end synchronized with the fill animation */
     0%, 10%, 100% {
-        width: 0;
-    }
-    65%, 78%, 85% {
-        width: 100%;
+        transform: translateX(0);
         opacity: 1;
     }
-
+    /* when the fill reaches the text, caret should be at the end */
+    65%, 85% {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+    /* small blink around the transition for realism */
     75%, 81% {
         opacity: 0;
     }
